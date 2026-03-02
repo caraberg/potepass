@@ -95,7 +95,7 @@ footer {
   bottom: 0;
   justify-content: center;
   position: fixed;
-  bottom: 0;
+  
 }
 
 .logo-footer {
@@ -116,4 +116,26 @@ footer {
 }
 .footer-buttons a:hover {
   text-decoration: underline;
+}
+
+.icons-footer {
+ right: 100px;
+ position: absolute;
+}
+
+.rights-footer {
+  color: white;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+}
+
+.rights-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.rigths-footer a:hover {
+  color: white;
+  text-decoration: none;
 }
