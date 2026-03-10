@@ -1,7 +1,15 @@
 import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
+import { createFooter } from './footer'
 import { setupCounter } from './counter.ts'
+
+import { createNavbar } from './navbar.ts';
+
+
+createNavbar();
+createFooter();
+
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
