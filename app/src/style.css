@@ -1,204 +1,87 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-
-}
-
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  color: black;
-  font-size: 16px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
-nav {
-width: 100%;
-height: 80px;
-background-color: #e7a66b;
-display: flex;
-justify-content: center;
-align-items: center;
+/* Header style */
+header {
+  max-width: 100%;
+  padding: 8px 98px;
+  position: relative;
+  background:#E7A66B;
+}
+
+header .wrapper_header {
+  min-height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-padding-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+nav a {
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
+nav ul {
+  display: flex;
+  text-align: center;
+  list-style: none;
+  align-items: center;
+  gap: 48px;
 }
 
-.nav-buttons {
-margin-left: auto;
-display: flex;
-align-items: center;
-gap: 100px;
-color: black;
-padding-right: 20px;
+.logg_ut {
+  color: #21272A;
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  border: 1px solid #000;
+  background: #BCD9C3;
 }
 
-.dogsitter-button {
-color: black;
-text-decoration: none;
-height: 48px;
-width: 114px;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.dogsitter-button:hover {
-text-decoration: underline;
-}
-
-.login-button {
-background-color: #79d18f;
-color: black;
-padding: 10px 20px;
-text-decoration: none;
-border-radius: 10px;
-transition: background-color 0.3s;
-height: 48px;
-width: 114px;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.login-button:hover {
-background-color: #588564;
-color: white;
-}
-
-.register-button {
-background-color: #bcd9c3;
-color: black;
-border: 2px solid black;
-padding: 10px 20px;
-border-radius: 10px;
-text-decoration: none;
-transition: background-color 0.3s;
-height: 48px;
-width: 114px;
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
-.register-button:hover {
-background-color: #8fb59b;
-color: white;
-}
-
-.main {
-flex: 1;
-max-width: 1280px;
-margin: 0 auto;
-padding: 2rem;
-text-align: center;
-}
-
+/* Footer style */
 footer {
-background-color: #ac7f5e;
-color: white;
-display: flex;
-padding: 0px 20px;
-align-items: center;
-width: 100%;
-height: 180px;
-bottom: 0;
-justify-content: center;
-position: fixed;
+  background: #AC7F5E;
 }
 
-.logo-footer {
-left: 20px;
-position: absolute;
+.wrapper_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 87vw;
+  padding-top: 25px;
 }
 
-.footer-buttons {
-display: flex;
-gap: 20px;
-color: white;
-text-decoration: none;
-}
-
-.footer-buttons a {
-color: white;
-text-decoration: none;
-}
-
-.footer-buttons a:hover {
-text-decoration: underline;
-}
-
-.icons-footer {
-right: 100px;
-position: absolute;
-}
-
-.rights-footer {
-color: white;
-text-decoration: none;
-position: absolute;
-bottom: 10px;
-}
-
-.rights-footer a {
-color: white;
-text-decoration: none;
-}
-
-.rigths-footer a:hover {
-color: white;
-text-decoration: none;
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+footer ul {
+  color: #fff;
 }
 
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.icons img {
+  margin-right: 16px;
+}
+
+.divider_footer {
+  max-width: 86vw;
+  height: 1px;
+  margin: 26px auto;
+  background:#C1C7CD;
+}
+
+.company {
+  color: var(--Default-White, #fff);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 25px;
 }
