@@ -1,5 +1,9 @@
 body {
   margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Header style */
@@ -48,96 +52,49 @@ nav ul {
   background: #BCD9C3;
 }
 
-/* Footer style */
-footer {
-  background: #AC7F5E;
+/*home-Ewa*/
+.content-container {
+  display: flex;          
+  gap: 40px;              
+  justify-content: flex-start; 
+  align-items: flex-start;
+  padding: 40px;
 }
 
-.wrapper_footer {
+.dogs-pictures {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 87vw;
-  padding-top: 25px;
+  flex-direction: column;
+  gap: 16px;
 }
 
-footer ul {
-  color: #fff;
+.dog-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-
-.icons img {
-  margin-right: 16px;
+.dog-shepherd {
+  margin-left: 100px;
 }
 
-.divider_footer {
-  max-width: 86vw;
-  height: 1px;
-  margin: 26px auto;
-  background:#C1C7CD;
-}
-
-.company {
-  color: var(--Default-White, #fff);
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-  padding-bottom: 25px;
-}
-
-/* Header style */
-header {
-  max-width: 100%;
-  padding: 8px 98px;
-  position: relative;
-  background:#E7A66B;
-}
-
-header .wrapper_header {
-  min-height: 56px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #FFFFFF;
-}
-
-nav ul {
-  display: flex;
-  text-align: center;
-  list-style: none;
-  align-items: center;
-  gap: 48px;
-}
-
-.logg_ut {
-  color: #21272A;
-  display: flex;
-  padding: 12px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 50px;
-  border: 1px solid #000;
-  background: #BCD9C3;
+.text-frame {
+border: 2px solid #E7A66B;
+font-size: 28px;
+border-radius: 10px;
+text-align: center;
+height: 400px; /*endret str fra 702x579 pga den var for stor*/
+width: 300px;
+flex: 1;
+margin: 0;
+padding: 20px;
 }
 
 /* Footer style */
 footer {
   background: #AC7F5E;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  margin-top: auto;
 }
 
 .wrapper_footer {
@@ -152,7 +109,6 @@ footer {
 footer ul {
   color: #fff;
 }
-
 
 .icons img {
   margin-right: 16px;
@@ -177,11 +133,6 @@ footer ul {
 }
 
 .company a {
-  color: white;
-  text-decoration: none;
-}
-
-.company a:hover {
   color: white;
   text-decoration: none;
 }
