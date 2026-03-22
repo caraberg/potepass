@@ -15,17 +15,17 @@ export function renderFooter(): string {
         </nav>
 
         <div class="icons">
-          <img src="/youtube.svg" alt="you" />
-          <img src="/linkedin.svg" alt="link" />
-          <img src="/twitter.svg" alt="twit" />
-          <img src="/instagram.svg" alt="inst" />
-           <img src="/facebook.svg" alt="face" />
+          <a href="https://www.youtube.com/"><img src="/youtube.svg" alt="you" /></a>
+          <a href="https://www.linkedin.com/"><img src="/linkedin.svg" alt="link" /></a>
+          <a href="https://x.com/"><img src="/twitter.svg" alt="twit" /></a>
+          <a href="https://www.instagram.com/"><img src="/instagram.svg" alt="inst" /></a>
+          <a href="https://www.facebook.com/"><img src="/facebook.svg" alt="face" /></a>
         </div>
       </div>
 
       <div class="divider_footer"></div>
 
-      <div class="company">Gokstad @ 2026. All rights reserved.</div>
-    </footer>
+      <div class="company"><a href="https://gokstadakademiet.no/">Gokstad @ 2026. All rights reserved.</div>
+    </a></footer>
   `;
 }
