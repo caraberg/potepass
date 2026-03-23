@@ -11,7 +11,7 @@ header {
   max-width: 100%;
   padding: 8px 98px;
   position: relative;
-  background:#E7A66B;
+  background: #e7a66b;
 }
 
 header .wrapper_header {
@@ -29,7 +29,7 @@ header .wrapper_header {
 
 nav a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 nav ul {
@@ -41,7 +41,7 @@ nav ul {
 }
 
 .logg_ut {
-  color: #21272A;
+  color: #21272a;
   display: flex;
   padding: 12px 20px;
   justify-content: center;
@@ -49,14 +49,14 @@ nav ul {
   gap: 10px;
   border-radius: 50px;
   border: 1px solid #000;
-  background: #BCD9C3;
+  background: #bcd9c3;
 }
 
 /*home-Ewa*/
 .content-container {
-  display: flex;          
-  gap: 40px;              
-  justify-content: flex-start; 
+  display: flex;
+  gap: 40px;
+  justify-content: flex-start;
   align-items: flex-start;
   padding: 40px;
 }
@@ -79,20 +79,20 @@ nav ul {
 }
 
 .text-frame {
-border: 2px solid #E7A66B;
-font-size: 28px;
-border-radius: 10px;
-text-align: center;
-height: 400px; /*endret str fra 702x579 pga den var for stor*/
-width: 300px;
-flex: 1;
-margin: 0;
-padding: 20px;
+  border: 2px solid #e7a66b;
+  font-size: 28px;
+  border-radius: 10px;
+  text-align: center;
+  height: 400px; /*endret str fra 702x579 pga den var for stor*/
+  width: 300px;
+  flex: 1;
+  margin: 0;
+  padding: 20px;
 }
 
 /* Footer style */
 footer {
-  background: #AC7F5E;
+  background: #ac7f5e;
   width: 100%;
   margin-top: auto;
 }
@@ -118,11 +118,10 @@ footer ul {
   max-width: 86vw;
   height: 1px;
   margin: 26px auto;
-  background:#C1C7CD;
+  background: #c1c7cd;
   color: white;
   text-decoration: none;
 }
-
 
 .company {
   color: var(--Default-White, #fff);
@@ -135,4 +134,69 @@ footer ul {
 .company a {
   color: white;
   text-decoration: none;
+}
+
+/*iphone*/
+
+@media (max-width: 768px) {
+  header {
+    padding: 12px 20px;
+    width: 100%;
+  }
+
+  header .wrapper_header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .content-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap; 
+  }
+
+  .dogs-pictures {
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+   
+  .dog-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  
+  .text-frame {
+    width: 300px; 
+    height: auto;
+    font-size: 16px;
+    flex: 1;
+  }
+
+  footer {
+     width: 100%;
+     padding: 12px 20px;
+  }
+
+  .wrapper_footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .icons {
+    justify-content: center;
+  }
 }
