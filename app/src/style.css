@@ -1,9 +1,26 @@
+html,
 body {
-  margin: 0 auto;
   height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Layout */
+#app {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+#view {
+  height: 100%;
 }
 
 /* Header style */
@@ -11,7 +28,7 @@ header {
   max-width: 100%;
   padding: 8px 98px;
   position: relative;
-  background: #e7a66b;
+  background: #E7A66B;
 }
 
 header .wrapper_header {
@@ -52,7 +69,7 @@ nav ul {
   background: #bcd9c3;
 }
 
-/*home-Ewa*/
+/* home-Ewa */
 .content-container {
   display: flex;
   gap: 40px;
@@ -79,11 +96,11 @@ nav ul {
 }
 
 .text-frame {
-  border: 2px solid #e7a66b;
+  border: 2px solid #E7A66B;
   font-size: 28px;
   border-radius: 10px;
   text-align: center;
-  height: 400px; /*endret str fra 702x579 pga den var for stor*/
+  height: 400px;
   width: 300px;
   flex: 1;
   margin: 0;
@@ -118,7 +135,7 @@ footer ul {
   max-width: 86vw;
   height: 1px;
   margin: 26px auto;
-  background: #c1c7cd;
+  background: #C1C7CD;
   color: white;
   text-decoration: none;
 }
@@ -134,7 +151,9 @@ footer ul {
 .company a {
   color: white;
   text-decoration: none;
+
 }
+
 
 /*iphone*/
 
@@ -200,3 +219,4 @@ footer ul {
     justify-content: center;
   }
 }
+
