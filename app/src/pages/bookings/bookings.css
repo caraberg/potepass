@@ -1,0 +1,250 @@
+/* Ivan Drozd */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* html, body {
+    height: 100%;
+} */
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    position: relative;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Header style */
+header {
+    max-width: 100%;
+    padding-top: 8px;
+    position: relative;
+    background: #E7A66B;
+}
+
+header .wrapper_header {
+    max-width: 86vw;
+    margin: 0 auto;
+    min-height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+nav ul {
+    display: flex;
+    text-align: center;
+    list-style: none;
+    align-items: center;
+    gap: 48px;
+}
+
+.logg_ut {
+    color: #21272A;
+    display: flex;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: #BCD9C3;
+}
+
+/* H1+Ny booking style */
+
+.booking_btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 86vw;
+    margin: 0 auto;
+    padding-top: 51px;
+}
+
+h1 {
+    padding-left: 16px;
+    color: #1A202C;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.15px;
+}
+
+.ny_booking {
+    display: flex;
+    width: 164px;
+    height: 48px;
+    padding: 11px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #E7A66B ;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0.5px;
+    margin-right: 80px;
+}
+
+
+.card_wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    max-width: 74vw;
+    max-height: 235px;
+    margin: 0 auto;
+    margin-top: 80px;
+    gap: 50px;
+}
+
+
+
+.card_img {
+    display: flex;
+    height: 235px;
+    max-width: 235px;
+    border-radius: 200px;
+}
+
+.card_info { 
+    display: flex;
+    flex: 1;
+    width: auto;
+    max-width: none;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 35px 27px 60px ;
+    border-radius: 10px;
+    border: 1px solid #E7A66B;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.name img {
+    display: flex;
+    max-width: 24px;
+    max-height: 24px;
+}
+
+.date {
+    display: flex;
+    justify-content: start ;
+    gap: 8px;
+    color: #1A202C;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: 0.5px;
+    margin-top: 36px;
+}
+
+.card_btn {
+    margin-top: 40px;
+    margin-right: 18px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 34px;
+}
+
+.det_del {
+    display: flex;
+    width: 111px;
+    height: 48px;
+    padding: 11px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 2px solid #E7A66B;
+}
+
+/* Footer style */
+footer {
+    margin-top: auto;
+    background: #AC7F5E;
+}
+
+.wrapper_footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 87vw;
+    padding-top: 25px;
+}
+
+footer ul {
+    color: #fff;
+}
+
+
+.icons img {
+    margin-right: 16px;
+}
+
+.divider_footer {
+    max-width: 86vw;
+    height: 1px;
+    margin: 26px auto;
+    background: #C1C7CD;
+}
+
+.company {
+    color: var(--Default-White, #fff);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 25px;
+}
+
+@media (max-width: 900px) {
+    /* Header  and Footer */
+  nav ul {
+    gap: 25px;
+   }
+
+    .logo img {
+        max-width: 120px;
+    }
+
+    .icons img {
+        margin-right: 8px;
+    }
+}

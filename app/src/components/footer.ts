@@ -3,9 +3,8 @@ export function renderFooter(): string {
     <footer>
       <div class="wrapper_footer">
         <div class="logo">
-          <a href="" class="footer_logo_link"><img src="/logo.png" alt="logo" /></a>
+          <a href="" class="logo_link"><img src="/logo.png" alt="logo" /></a>
         </div>
-
         <nav>
           <ul>
             <li><a href="#" id="min_profil">Min profil</a></li>
