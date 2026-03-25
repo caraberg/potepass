@@ -7,7 +7,6 @@ export function renderFooter(): string {
             <img src="/logo.png" alt="logo" />
           </a>
         </div>
-
         <nav>
           <ul>
             <li><a href="#" id="profile">Min profil</a></li>
