@@ -3,8 +3,11 @@ import "./style.css";
 import { renderHeader } from "./components/header";
 import { renderFooter } from "./components/footer";
 import { renderBookings } from "./pages/bookings/bookings";
-// import { renderPetSitters } from "./pages/petsitters/petsitters";
 // import {renderUsers} from "./pages/users/users"; 
+import {
+  renderPetSittersPage,
+  setupPetSittersEvents,
+} from "./pages/petsitters/petsitters";
 
 const app = document.querySelector<HTMLDivElement>("#app");
 
@@ -71,3 +74,13 @@ navLogout?.addEventListener("click", (e) => {
 
 
 
+(async () => {
+  const view = document.querySelector<HTMLElement>("#view");
+
+  if (!view) {
+    throw new Error("Fant ikke #view");
+  }
+
+  view.innerHTML = await renderPetSittersPage();
+  setupPetSittersEvents();
+})();
