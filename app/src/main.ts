@@ -3,7 +3,7 @@ import "./style.css";
 import { renderHeader } from "./components/header";
 import { renderFooter } from "./components/footer";
 import { renderBookings } from "./pages/bookings/bookings";
-// import {renderUsers} from "./pages/users/users"; 
+// import {renderUsersEditForm, setupUserEvents} from "./pages/users/users"; 
 import {
   renderPetSittersPage,
   setupPetSittersEvents,

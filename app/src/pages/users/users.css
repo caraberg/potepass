@@ -1,0 +1,213 @@
+/* Ewa Cwik */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Layout */
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+#view {
+  height: 100%;
+}
+
+/* Header style */
+header {
+  max-width: 100%;
+  padding: 8px 98px;
+  position: relative;
+  background: #E7A66B;
+}
+
+header .wrapper_header {
+  min-height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+nav ul {
+  display: flex;
+  text-align: center;
+  list-style: none;
+  align-items: center;
+  gap: 48px;
+}
+
+.logg_ut {
+  color: #21272a;
+  display: flex;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  border: 1px solid #000;
+  background: #bcd9c3;
+}
+
+/* main brukerprofil */
+
+.user-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.edit-email {
+  border: 2px solid #E7A66B;
+  font-size: 28px;
+  border-radius: 10px;
+  text-align: center;
+  height: 579px;
+  width: 702px;
+  flex: 1;
+  margin: 0;
+  padding: 20px;
+}
+
+.edit-name {
+  border: 2px solid #E7A66B;
+  font-size: 28px;
+  border-radius: 10px;
+  text-align: center;
+  height: 579px;
+  width: 702px;
+  flex: 1;
+  margin: 0;
+  padding: 20px;
+}
+
+.edit-surname {
+  border: 2px solid #E7A66B;
+  font-size: 28px;
+  border-radius: 10px;
+  text-align: center;
+  height: 579px;
+  width: 702px;
+  flex: 1;
+  margin: 0;
+  padding: 20px;
+}
+
+.edit-passord {
+  border: 2px solid #E7A66B;
+  font-size: 28px;
+  border-radius: 10px;
+  text-align: center;
+  height: 579px;
+  width: 702px;
+  flex: 1;
+  margin: 0;
+  padding: 20px;
+}
+
+
+/* Footer style */
+footer {
+  background: #ac7f5e;
+  width: 100%;
+  margin-top: auto;
+}
+
+.wrapper_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 87vw;
+  padding-top: 25px;
+}
+
+footer ul {
+  color: #fff;
+}
+
+.icons img {
+  margin-right: 16px;
+}
+
+.divider_footer {
+  max-width: 86vw;
+  height: 1px;
+  margin: 26px auto;
+  background: #C1C7CD;
+  color: white;
+  text-decoration: none;
+}
+
+.company {
+  color: var(--Default-White, #fff);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  padding-bottom: 25px;
+}
+
+.company a {
+  color: white;
+  text-decoration: none;
+
+}
+
+
+/*iphone*/
+
+@media (max-width: 768px) {
+  header {
+    padding: 12px 20px;
+    width: 100%;
+  }
+
+  header .wrapper_header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .content-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    width: 100%;
+    height: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap; 
+    }
+
+   .user-picture {
+    width: 80px;
+    height: 80px;
+  }
+}
