@@ -1,6 +1,26 @@
 
+/* Ewa Cwik*/
 
-/*bilde etter valg*/
+import "./users.css";
+
+import {
+  getUser,
+  createUser, /*legg til en hund istedenfor */
+  updateUser,
+  deleteUser,
+} from "../../api/usersApi";
+
+type UserInput = {
+  email: string;
+  name: string;
+  surname: string;
+  password: string;
+  image: string;
+  created: string;
+  updated: string;
+};
+
+/*bruker bilde*/
 const uploadInput = document.getElementById("uploadImage");
 const previewImage = document.getElementById("previewImage");
 const uploadText = document.querySelector(".upload-text");
@@ -21,8 +41,10 @@ uploadInput.addEventListener("change", function () {
   }
 });
 
-/*add dog button*/
+/*legg til en hund knapp*/
 document.getElementById("addDogBtn").addEventListener("click", () => {
   alert("Åpne skjema for å legge til hund");
 });
+
+/*slett knapp*/
 
