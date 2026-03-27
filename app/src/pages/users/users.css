@@ -103,6 +103,7 @@ nav ul {
 .user-picture:hover {
   opacity: 0.8;
 }
+
 .upload-text {
   position: absolute;
   text-align: center;
@@ -134,7 +135,25 @@ nav ul {
 }
 
 .hidden {
-  display: none;
+  display: none /*important - her modal er synlig hele tiden og må fikses*/
+}
+
+.dog-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: #e7a66b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #e7a66b;
+  margin: 0 auto;
+}
+
+.dog-picture:hover {
+  opacity: 0.8;
 }
 
 .addDog-modal-overlay {
@@ -157,7 +176,7 @@ nav ul {
   height: 500px;
 }
 
-.dog.container {
+.dog-container {
   display: flex;
   flex-direction: column;
   align-items: center;
