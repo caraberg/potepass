@@ -6,7 +6,12 @@ export function renderHeader(): string {
         <a href="#" class="logo_link"><img src="/logo.png" alt="logo" /></a>
       </div>
 
-      <nav>
+      <nav class="nav">
+        <button class="burger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <ul>
           <li><a href="#" id="profile">Min profil</a></li>
           <li><a href="#" id="petsitters">Finn hundepasser</a></li>
