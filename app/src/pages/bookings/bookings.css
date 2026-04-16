@@ -29,7 +29,7 @@ main {
 }
 
 /* Header style */
-header {
+/* header {
     max-width: 100%;
     padding-top: 8px;
     position: relative;
@@ -74,7 +74,7 @@ nav ul {
     border-radius: 50px;
     border: 1px solid #000;
     background: #BCD9C3;
-}
+} */
 
 /* H1+Ny booking style */
 
@@ -195,7 +195,7 @@ h1 {
 }
 
 /* Footer style */
-footer {
+/* footer {
     margin-top: auto;
     background: #AC7F5E;
 }
@@ -232,6 +232,14 @@ footer ul {
     font-size: 14px;
     font-weight: 400;
     padding-bottom: 25px;
+} */
+
+.ny_booking_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50vw;
+    margin: 0 auto;
 }
 
 @media (max-width: 900px) {
@@ -247,4 +255,158 @@ footer ul {
     .icons img {
         margin-right: 8px;
     }
+}
+
+/* modal style */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 340px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divider-modal {
+    height: 1px;
+    background: #ddd;
+    margin: 10px 0;
+}
+
+.modal-content input,
+.modal-content select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn-primary {
+    background: #6c8f6b;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+.btn-secondary {
+    background: #e0e0e0;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+.btn-danger {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+/* details style */
+.details_container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.details_card {
+    margin-top: 20px;
+    background: #f3f4f6;
+    border-radius: 16px;
+    padding: 30px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.details_content {
+    flex: 1;
+}
+
+.details_row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.details_row span {
+    color: #6b7280;
+}
+
+.details_row p {
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 12px 0;
+}
+
+.details_image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2px solid #d1d5db;
+    background: #e5e7eb;
+}
+
+.status {
+    font-weight: 600;
+}
+
+.details_image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid orange;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.details_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#back {
+    margin-top: 30px;
+    padding: 8px 16px;
+    border: none;
+    background: #6c8f6b;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#back:hover {
+    background: #5a7a5a;
 }

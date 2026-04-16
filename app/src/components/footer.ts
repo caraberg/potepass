@@ -9,9 +9,9 @@ export function renderFooter(): string {
         </div>
         <nav>
           <ul>
-            <li><a href="#" id="profile">Min profil</a></li>
-            <li><a href="#" id="petsitters">Finn hundepasser</a></li>
-            <li><a href="#" id="bookings">Mine bookinger</a></li>
+            <li><a href="#" id="footer_profile">Min profil</a></li>
+            <li><a href="#" id="footer_petsitters">Finn hundepasser</a></li>
+            <li><a href="#" id="footer_bookings">Mine bookinger</a></li>
           </ul>
         </nav>
 

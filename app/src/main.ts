@@ -3,11 +3,9 @@ import "./style.css";
 import { renderHeader } from "./components/header";
 import { renderFooter } from "./components/footer";
 import { renderBookings } from "./pages/bookings/bookings";
-// import {renderUsersEditForm, setupUserEvents} from "./pages/users/users"; 
-import {
-  renderPetSittersPage,
-  setupPetSittersEvents,
-} from "./pages/petsitters/petsitters";
+import { renderPetSittersPage, setupPetSittersEvents } from "./pages/petsitters/petsitters";
+// import { renderUsers } from "./pages/users/users";
+
 
 const app = document.querySelector<HTMLDivElement>("#app");
 
@@ -15,17 +13,32 @@ if (!app) {
   throw new Error("Fant ikke #app");
 }
 
-app.innerHTML = ` 
-${renderHeader()}
+app.innerHTML = `
+  ${renderHeader()}
   <main>
     <section id="view"></section>
   </main>
-${renderFooter()}
+  ${renderFooter()}
 `;
 
+setupBurgerMenu();
+
+function setupBurgerMenu() {
+  const burger = document.querySelector<HTMLElement>(".burger");
+  const nav = document.querySelector<HTMLElement>(".nav");
+if (burger && nav) {
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+}
+}
 
 const view = document.querySelector<HTMLElement>("#view");
 
+if (!view) {
+  throw new Error("Fant ikke #view");
+}
 
 function showBookings() {
   renderBookings(view!);
@@ -35,52 +48,73 @@ function showBookings() {
 //   renderUsers(view!);
 // }
 
-// function showPetsitters() {
-//   renderPetSitters(view!);
-// }
+async function showPetSitters() {
+  view!.innerHTML = await renderPetSittersPage();
+  setupPetSittersEvents();
+}
 
+// STARTSIDE
 showBookings();
 
-// NAVIGASJON
-const navUsers = document.querySelector<HTMLElement>("#profile");
+// navigation header
+// const navUsers = document.querySelector<HTMLElement>("#profile");
 const navPetSitters = document.querySelector<HTMLElement>("#petsitters");
 const navBookings = document.querySelector<HTMLElement>("#bookings");
 const navLogout = document.querySelector<HTMLElement>("#logout");
 
+//navigation footer
+// const footerNavUsers = document.querySelector<HTMLElement>("#footer_profile");
+const footerNavPetSitters = document.querySelector<HTMLElement>("#footer_petsitters");
+const footerNavBookings = document.querySelector<HTMLElement>("#footer_bookings");
 
-// For å kunne klikke på logoen for å komme til startsiden
+//navigation logo
 const logoLink = document.querySelector<HTMLElement>(".logo_link");
-logoLink?.addEventListener("click", (e) => {
+const footerHome = document.querySelector<HTMLElement>(".footer_logo_link");
+
+logoLink?.addEventListener("click", (e: MouseEvent) => {
   e.preventDefault();
   showBookings();
 });
-navBookings?.addEventListener("click", (e) => {
+
+footerHome?.addEventListener("click", (e: MouseEvent) => {
   e.preventDefault();
   showBookings();
 });
-// navPetSitters?.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   showPetsitters();
-// });
-// navUsers?.addEventListener("click", (e) => { 
-//   e.preventDefault();
-//   renderUsers(view!);
-// });
-navLogout?.addEventListener("click", (e) => {
+
+navBookings?.addEventListener("click", (e: MouseEvent) => {
   e.preventDefault();
- console.log("Logg ut kommer snart!");
+  showBookings();
+});
+
+navPetSitters?.addEventListener("click", async (e: MouseEvent) => {
+  e.preventDefault();
+  await showPetSitters();
+});
+
+// const navUsers = document.querySelector<HTMLElement>("#profile");
+// navUsers?.addEventListener("click", (e: MouseEvent) => {
+//   e.preventDefault();
+//   showUsers();
+// });
+
+navLogout?.addEventListener("click", (e: MouseEvent) => {
+  e.preventDefault();
+  console.log("Logg ut kommer snart!");
 });
 
 
+footerNavBookings?.addEventListener("click", (e: MouseEvent) => {
+  e.preventDefault();
+  showBookings();
+});
 
+footerNavPetSitters?.addEventListener("click", async (e: MouseEvent) => {
+  e.preventDefault();
+  await showPetSitters();
+});
 
-(async () => {
-  const view = document.querySelector<HTMLElement>("#view");
-
-  if (!view) {
-    throw new Error("Fant ikke #view");
-  }
-
-  view.innerHTML = await renderPetSittersPage();
-  setupPetSittersEvents();
-})();
+// const footerNavUsers = document.querySelector<HTMLElement>("#footer_profile");
+// footerNavUsers?.addEventListener("click", (e: MouseEvent) => {
+//   e.preventDefault();
+//   showUsers();
+// });
