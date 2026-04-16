@@ -100,7 +100,15 @@ export async function renderBookings(view: HTMLElement) {
   });
 }
 
-async function openCreateModal(view: HTMLElement) {
+// open modal with pre-selected petSitter
+export async function openCreateModalForPetSitter(
+  view: HTMLElement,
+  selectedPetSitterId: number
+) {
+  openCreateModal(view, selectedPetSitterId);
+}
+
+async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) {
   const users = await getUsers();
   const user = users.find((u) => u.id === 1);
   const petSitters = await getPetSitters();
@@ -120,10 +128,17 @@ async function openCreateModal(view: HTMLElement) {
         ${user.dogs.map((d) => `<option value="${d.id}">${d.name}</option>`).join("")}
       </select>
 
-      <label>Velg hundepasser</label>
-      <select id="sitter">
-        ${petSitters.map((s: any) => `<option value="${s.id}">${s.name}</option>`).join("")}
-      </select>
+    <label ${selectedPetSitterId ? 'style="display:none;"' : ""}>
+     Velg hundepasser
+    </label>
+
+    <select id="sitter" ${selectedPetSitterId ? 'style="display:none;"' : ""}>
+    ${petSitters.map((s: any) => `
+    <option value="${s.id}" ${selectedPetSitterId === s.id ? "selected" : ""}>
+      ${s.name}
+    </option>
+    `).join("")}
+    </select>
 
       <label>Fra dato</label>
       <input type="date" id="fromDate">
@@ -149,9 +164,11 @@ async function openCreateModal(view: HTMLElement) {
 
   modal.querySelector("#saveBooking")?.addEventListener("click", async () => {
     await createBooking({
-      userId: 1,
+      userId: 1, // hardcoded for now, since we don't have authentication
       userDogId: Number((modal.querySelector("#dog") as HTMLSelectElement).value),
-      petSitterId: Number((modal.querySelector("#sitter") as HTMLSelectElement).value),
+      petSitterId:selectedPetSitterId
+      ? selectedPetSitterId
+      : Number((modal.querySelector("#sitter") as HTMLSelectElement).value),
       fromDate: (modal.querySelector("#fromDate") as HTMLInputElement).value,
       toDate: (modal.querySelector("#toDate") as HTMLInputElement).value,
       message: (modal.querySelector("#message") as HTMLInputElement).value,
