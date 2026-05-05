@@ -28,6 +28,10 @@ main {
     margin: 0 auto;
 }
 
+.cards_container {
+    margin-bottom: 20px;
+}
+
 /* Header style */
 /* header {
     max-width: 100%;
@@ -245,7 +249,7 @@ footer ul {
 @media (max-width: 900px) {
     /* Header  and Footer */
   nav ul {
-    gap: 25px;
+    gap: 30px;
    }
 
     .logo img {
@@ -255,7 +259,109 @@ footer ul {
     .icons img {
         margin-right: 8px;
     }
+
+    .booking_btn {
+        padding-top: 30px;
+    }
+
+    .ny_booking {
+        margin-right: 30px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .card_wrapper {
+        max-width: 85vw;
+        margin-top: 50px;
+    }
+
+
+    .date {
+        font-size: 18px;
+    }
 }
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .ny_booking {
+        margin: 0;
+        width: 120px;
+        height: 40px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .card_wrapper {
+        gap: 20px;
+    }
+
+    .details_image {
+        max-width: 140px;
+        max-height: 140px;
+    }
+
+    .card_info {
+        padding: 30px 20px 20px 30px;
+    }
+
+    .edit {
+        width: 18px;
+        height: 18px;
+    }
+
+    .calendar {
+        width: 18px;
+        height: 18px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .date {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .card_btn {
+        margin-top: 20px;
+        gap: 20px;
+    }
+    .det_del {
+        width: 90px;
+        height: 40px;
+        padding: 6px 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .details_image {
+        display: none;
+    }
+
+    h1 {
+        font-size: 24px;
+        padding: 0;
+    }
+
+    .ny_booking {
+        width: 100px;
+        height: 36px;
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+     nav ul {
+        gap: 15px;
+        font-size: 14px;
+    }
+}
+
 
 /* modal style */
 

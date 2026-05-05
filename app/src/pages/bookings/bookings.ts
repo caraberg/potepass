@@ -9,19 +9,7 @@ import {
   deleteBooking,
 } from "../../api/bookingsApi";
 import { getPetSitters } from "../../api/petsittersApi";
-
-type Booking = {
-  id: number;
-  userId: number;
-  userDogId: number;
-  petSitterId: number;
-  fromDate: string;
-  toDate: string;
-  status: "pending";
-  message: string;
-  created: string;
-  updated: string;
-};
+import type { Booking } from "../../api/bookingsApi";
 
 
 export async function renderBookings(view: HTMLElement) {
@@ -38,7 +26,7 @@ export async function renderBookings(view: HTMLElement) {
     <div class="cards_container"></div>
   `;
 
-  const container = view.querySelector(".cards_container") as HTMLElement;
+  const container = view.querySelector(".cards_container") as HTMLElement; 
 
   // btn create
   view.querySelector(".ny_booking")?.addEventListener("click", () => {
@@ -70,8 +58,8 @@ export async function renderBookings(view: HTMLElement) {
         </div>
 
         <div class="date">
-          <img src="/calendar.png">
-          <span>${booking.fromDate} - ${booking.toDate}</span>
+          <img src="/calendar.png" class="calendar">
+          <span>${booking.fromDate } - ${booking.toDate}</span>
         </div>
 
         <div class="card_btn">
