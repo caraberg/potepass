@@ -4,20 +4,20 @@ const API_URL = "http://localhost:3000/api/bookings";
 const API_KEY = "12345";
 
 // import type { Booking } from "../types/bookings";
-type Booking = {
+export type Booking = {
 id: number;
 userId: number;
 userDogId: number;
 petSitterId: number;
 fromDate: string;
 toDate: string;
-status: "pending";
+status: "pending" | "approved" | "rejected";
 message: string;
 created: string;
 updated: string;
 };
 
-type User = {
+export type User = {
 id: number;
 userName: string;
 password: string;

@@ -26,13 +26,15 @@ main {
 /* Header style */
 header {
   max-width: 100%;
-  padding: 8px 98px;
+  padding: 8px 0;
   position: relative;
   background: #E7A66B;
 }
 
 header .wrapper_header {
+  max-width: 86vw;
   min-height: 56px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -184,6 +186,7 @@ footer ul {
      width: 100%;
      padding: 12px 20px;
   }
+
 
   .wrapper_footer {
     flex-direction: column;
