@@ -29,58 +29,8 @@ main {
 }
 
 .cards_container {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
-
-/* Header style */
-/* header {
-    max-width: 100%;
-    padding-top: 8px;
-    position: relative;
-    background: #E7A66B;
-}
-
-header .wrapper_header {
-    max-width: 86vw;
-    margin: 0 auto;
-    min-height: 56px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #FFFFFF;
-}
-
-nav ul {
-    display: flex;
-    text-align: center;
-    list-style: none;
-    align-items: center;
-    gap: 48px;
-}
-
-.logg_ut {
-    color: #21272A;
-    display: flex;
-    padding: 12px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 50px;
-    border: 1px solid #000;
-    background: #BCD9C3;
-} */
-
-/* H1+Ny booking style */
 
 .booking_btn {
     display: flex;
@@ -195,48 +145,9 @@ h1 {
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    border: 2px solid #E7A66B;
+    background: #E7A66B;
+    border: none;
 }
-
-/* Footer style */
-/* footer {
-    margin-top: auto;
-    background: #AC7F5E;
-}
-
-.wrapper_footer {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 87vw;
-    padding-top: 25px;
-}
-
-footer ul {
-    color: #fff;
-}
-
-
-.icons img {
-    margin-right: 16px;
-}
-
-.divider_footer {
-    max-width: 86vw;
-    height: 1px;
-    margin: 26px auto;
-    background: #C1C7CD;
-}
-
-.company {
-    color: var(--Default-White, #fff);
-    text-align: center;
-    font-size: 14px;
-    font-weight: 400;
-    padding-bottom: 25px;
-} */
 
 .ny_booking_wrapper{
     display: flex;
@@ -483,6 +394,7 @@ footer ul {
 }
 
 .status {
+    margin-top: 10px;
     font-weight: 600;
 }
 
@@ -502,7 +414,18 @@ footer ul {
     display: block;
 }
 
-#back {
+.details_actions {
+    display: flex;
+}
+
+.rights_actions {
+    display: flex;
+    margin-left: auto;
+    gap: 20px;
+}
+
+
+#back, #approve, #reject {
     margin-top: 30px;
     padding: 8px 16px;
     border: none;
@@ -513,6 +436,64 @@ footer ul {
     font-size: 16px;
 }
 
-#back:hover {
+#back:hover, #approve:hover, #reject:hover {
     background: #5a7a5a;
+}
+
+
+
+/* LOADING STATE */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 16px;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #eee;
+    border-top: 5px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-container p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* STATUS COLORS */
+.status {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* pending = orange */
+.status.pending {
+    color: #e67e22;
+}
+
+/* approved = green */
+.status.approved {
+    color: #27ae60;
+}
+
+/* rejected = red */
+.status.rejected {
+    color: #e74c3c;
 }

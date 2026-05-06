@@ -13,6 +13,12 @@ import type { Booking } from "../../api/bookingsApi";
 
 
 export async function renderBookings(view: HTMLElement) {
+  try{
+      view.innerHTML = `
+      <div class="loading-container">
+        <p>Laster bookinger...</p>
+      </div>
+      `;
   const bookings = await getBookings();
   const users = await getUsers();
   const petsitters = await getPetSitters();
@@ -61,7 +67,9 @@ export async function renderBookings(view: HTMLElement) {
           <img src="/calendar.png" class="calendar">
           <span>${booking.fromDate } - ${booking.toDate}</span>
         </div>
-
+<div class="status ${booking.status}">
+  ${booking.status}
+</div>
         <div class="card_btn">
           <button class="det_del details_btn">Detaljer</button>
           <button class="det_del delete_btn">Slett</button>
@@ -86,6 +94,10 @@ export async function renderBookings(view: HTMLElement) {
 
     container.appendChild(card);
   });
+    } catch (error) {
+    view.innerHTML = `<p>Noe gikk galt</p>`;
+    console.error(error);
+  }
 }
 
 // open modal with pre-selected petSitter
@@ -151,6 +163,7 @@ async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) 
   });
 
   modal.querySelector("#saveBooking")?.addEventListener("click", async () => {
+    try {
     await createBooking({
       userId: 1, // hardcoded for now, since we don't have authentication
       userDogId: Number((modal.querySelector("#dog") as HTMLSelectElement).value),
@@ -165,6 +178,9 @@ async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) 
 
     modal.remove();
     renderBookings(view);
+    } catch (error) {
+      alert("Kunne ikke opprette booking");
+    }
   });
 }
 
@@ -213,6 +229,13 @@ function openEditModal(view: HTMLElement, booking: Booking) {
 }
 
 async function renderBookingDetails(view: HTMLElement, id: number) {
+  try {
+    view.innerHTML = `
+    <div class="loading-container">
+     <p>Laster detaljer...</p>
+    </div>
+    `;
+
   const bookings = await getBookings();
   const users = await getUsers();
   const petSitters = await getPetSitters();
@@ -268,14 +291,56 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
 
       </div>
 
+      
+    <div class="details_actions">
       <button class="item-btn" id="back">← Tilbake</button>
+      ${
+       booking.status === "pending"
+        ? `
+        <div class="rights_actions">
+          <button id="approve">Godkjenn</button>
+          <button id="reject">Avslå</button>
+        </div>
+    </div>
+  `
+    : ""
+}
     </div>
   `;
 
   view.querySelector("#back")?.addEventListener("click", () => {
     renderBookings(view);
   });
+  if (booking.status === "pending") {
+      view.querySelector("#approve")?.addEventListener("click", async () => {
+        try {
+          await updateBooking(booking.id.toString(), {
+            ...booking,
+            status: "approved",
+          });
+          renderBookingDetails(view, booking.id);
+        } catch {
+          alert("Kunne ikke oppdatere booking");
+        }
+      });
+
+      view.querySelector("#reject")?.addEventListener("click", async () => {
+        try {
+          await updateBooking(booking.id.toString(), {
+            ...booking,
+            status: "rejected",
+          });
+          renderBookingDetails(view, booking.id);
+        } catch {
+          alert("Kunne ikke oppdatere booking");
+        }
+      });
+    }
+  } catch (error) {
+    view.innerHTML = `<p>Noe gikk galt</p>`;
+  }
 }
+
 
 function openDeleteModal(view: HTMLElement, bookingId: number) {
   const modal = document.createElement("div");

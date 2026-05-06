@@ -11,7 +11,7 @@ userDogId: number;
 petSitterId: number;
 fromDate: string;
 toDate: string;
-status: "pending";
+status: "pending" | "approved" | "rejected";
 message: string;
 created: string;
 updated: string;
