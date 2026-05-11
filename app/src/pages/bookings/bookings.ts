@@ -86,9 +86,9 @@ export async function renderBookings(view: HTMLElement) {
           <img src="/calendar.png" class="calendar" alt="Kalender ikon">
           <span>${booking.fromDate } - ${booking.toDate}</span>
         </div>
-<div class="status ${booking.status}">
-  ${booking.status}
-</div>
+        <div class="status ${booking.status}">
+        ${booking.status}
+        </div>
         <div class="card_btn">
           <button class="det_del details_btn">Detaljer</button>
           <button class="det_del delete_btn">Slett</button>
@@ -197,6 +197,11 @@ async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) 
       showToast("Fyll inn alle felter", "error");
       return;
     }
+
+    if (fromDate > toDate) {
+      showToast("Fra dato kan ikke være etter til dato", "error");
+      return;
+    }
     await createBooking({
       userId: CURRENT_USER_ID,
       userDogId: Number((modal.querySelector("#dog") as HTMLSelectElement).value),
@@ -271,6 +276,11 @@ function openEditModal(view: HTMLElement, booking: Booking) {
       showToast("Ingen endringer ble gjort", "info");
       return;
     }
+
+    if (fromDate > toDate) {
+    showToast("Fra dato kan ikke være etter til dato", "error");
+    return;
+    }
     await updateBooking(booking.id.toString(), {
       ...booking,
       fromDate,
@@ -280,7 +290,7 @@ function openEditModal(view: HTMLElement, booking: Booking) {
     });
 
     modal.remove();
-    showToast("Booking oppdatert", "success");
+    showToast("Booking oppdatert og sendt til ny godkjenning", "success");
     renderBookings(view);
       } catch {
     showToast("Kunne ikke oppdatere booking", "error");
@@ -346,7 +356,7 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
         </div>
 
        <div class="details_image">
-        <img src="/schafer.jpg">
+        <img src="/schafer.jpg" alt="${dog?.name || 'Hund'}">
        </div>
 
       </div>

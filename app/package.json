@@ -10,7 +10,7 @@
   "uu:forside": "pa11y http://localhost:5173/",
   "uu:bookings": "pa11y http://localhost:5173/bookings --timeout 5000 --wait 2000",
   "uu:petsitters": "pa11y http://localhost:5173/petsitters --timeout 5000 --wait 2000", 
-  "uu": "npm run uu:forside && npm run uu:petsitters && npm run uu:bookings"  
+  "uu": "npm run uu:forside && npm run uu:bookings && npm run uu:petsitters"  
 },
   "devDependencies": {
     "pa11y": "^9.1.1",
