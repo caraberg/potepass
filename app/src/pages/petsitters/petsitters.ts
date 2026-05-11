@@ -1,6 +1,9 @@
 // Fullt navn: Carina Alexandra Bergman
 
 import "./petsitters.css";
+
+import { openCreateModalForPetSitter } from "../bookings/bookings";
+
 import {
   getPetSitters,
   createPetSitter,
@@ -290,7 +293,7 @@ export function renderPetSitterDetail(id: number): string {
 
         <div class="petsitter-detail-buttons">
           <button class="back-btn">Tilbake</button>
-          <button class="book-btn" id="book-btn">Book hundepasser</button>
+          <button class="book-btn" id="book-btn" data-id="${petSitter.id}">Book hundepasser</button>
         </div>
       </div>
 
@@ -548,12 +551,15 @@ export function setupPetSittersEvents() {
       return;
     }
     if (target.id === "book-btn") {
-       showToast("Booking funksjon kommer senere");
-      return;
+     const petsitterId = Number(target.dataset.id);
+
+     openCreateModalForPetSitter(view as HTMLElement, petsitterId);
+
+     return;
     }
     });
 
-  view.addEventListener("change", (e) => {
+   view.addEventListener("change", (e) => {
     const target = e.target as HTMLElement;
 
     if (target.id === "city") {
