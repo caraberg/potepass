@@ -11,11 +11,26 @@ import {
 import { getPetSitters } from "../../api/petsittersApi";
 import type { Booking } from "../../api/bookingsApi";
 
+const CURRENT_USER_ID = 1; // hardcoded for now, since we don't have authentication
+
+function showToast(text: string, type: "success" | "error" | "info") {
+  const toast = document.createElement("div");
+
+  toast.className = `toast ${type}`;
+  toast.textContent = text;
+
+  document.body.appendChild(toast);
+
+    setTimeout(() => {
+      toast.remove();
+    }, 3000);
+}
 
 export async function renderBookings(view: HTMLElement) {
   try{
       view.innerHTML = `
       <div class="loading-container">
+        <div class="loading-spinner"></div>
         <p>Laster bookinger...</p>
       </div>
       `;
@@ -39,8 +54,12 @@ export async function renderBookings(view: HTMLElement) {
     openCreateModal(view);
   });
 
-  // show all bookings
-  bookings.forEach((booking) => {
+  // show all bookings for current user
+  const currentUserBookings = bookings.filter(
+   (booking) => booking.userId === CURRENT_USER_ID
+  );
+
+  currentUserBookings.forEach((booking) => {
     const user = users.find((u) => u.id === booking.userId);
     if (!user) return;
 
@@ -60,11 +79,11 @@ export async function renderBookings(view: HTMLElement) {
       <div class="card_info">
         <div class="name">
           <h2>${dog?.name || "Dog"} hos ${sitter?.name || "Sitter"}</h2>
-          <img src="/Note_Edit.png" class="edit">
+          <img src="/Note_Edit.png" class="edit" alt="Rediger booking">
         </div>
 
         <div class="date">
-          <img src="/calendar.png" class="calendar">
+          <img src="/calendar.png" class="calendar" alt="Kalender ikon">
           <span>${booking.fromDate } - ${booking.toDate}</span>
         </div>
 <div class="status ${booking.status}">
@@ -110,7 +129,7 @@ export async function openCreateModalForPetSitter(
 
 async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) {
   const users = await getUsers();
-  const user = users.find((u) => u.id === 1);
+  const user = users.find((u) => u.id === CURRENT_USER_ID);
   const petSitters = await getPetSitters();
 
   if (!user) return;
@@ -164,22 +183,37 @@ async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) 
 
   modal.querySelector("#saveBooking")?.addEventListener("click", async () => {
     try {
+          const fromDate = (
+      modal.querySelector("#fromDate") as HTMLInputElement
+    ).value;
+    const toDate = (
+      modal.querySelector("#toDate") as HTMLInputElement
+    ).value;
+    const message = (
+      modal.querySelector("#message") as HTMLInputElement
+    ).value;
+
+    if (!fromDate || !toDate || !message.trim()) {
+      showToast("Fyll inn alle felter", "error");
+      return;
+    }
     await createBooking({
-      userId: 1, // hardcoded for now, since we don't have authentication
+      userId: CURRENT_USER_ID,
       userDogId: Number((modal.querySelector("#dog") as HTMLSelectElement).value),
       petSitterId:selectedPetSitterId
       ? selectedPetSitterId
       : Number((modal.querySelector("#sitter") as HTMLSelectElement).value),
-      fromDate: (modal.querySelector("#fromDate") as HTMLInputElement).value,
-      toDate: (modal.querySelector("#toDate") as HTMLInputElement).value,
-      message: (modal.querySelector("#message") as HTMLInputElement).value,
+      fromDate,
+      toDate,
+      message,
       status: "pending",
     });
 
     modal.remove();
+    showToast("Booking opprettet", "success");
     renderBookings(view);
     } catch (error) {
-      alert("Kunne ikke opprette booking");
+      showToast("Kunne ikke opprette booking", "error");
     }
   });
 }
@@ -216,15 +250,41 @@ function openEditModal(view: HTMLElement, booking: Booking) {
   });
 
   modal.querySelector("#save")?.addEventListener("click", async () => {
+      try {
+    const fromDate = (
+      modal.querySelector("#fromDate") as HTMLInputElement
+    ).value;
+
+    const toDate = (
+      modal.querySelector("#toDate") as HTMLInputElement
+    ).value;
+
+    const message = (
+      modal.querySelector("#message") as HTMLInputElement
+    ).value;
+
+    if (
+      fromDate === booking.fromDate &&
+      toDate === booking.toDate &&
+      message === booking.message
+    ) {
+      showToast("Ingen endringer ble gjort", "info");
+      return;
+    }
     await updateBooking(booking.id.toString(), {
       ...booking,
-      fromDate: (modal.querySelector("#fromDate") as HTMLInputElement).value,
-      toDate: (modal.querySelector("#toDate") as HTMLInputElement).value,
-      message: (modal.querySelector("#message") as HTMLInputElement).value,
+      fromDate,
+      toDate,
+      message,
+      status: "pending",
     });
 
     modal.remove();
+    showToast("Booking oppdatert", "success");
     renderBookings(view);
+      } catch {
+    showToast("Kunne ikke oppdatere booking", "error");
+  }
   });
 }
 
@@ -318,9 +378,10 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
             ...booking,
             status: "approved",
           });
+          showToast("Booking godkjent", "success");
           renderBookingDetails(view, booking.id);
         } catch {
-          alert("Kunne ikke oppdatere booking");
+          showToast("Kunne ikke oppdatere booking", "error");
         }
       });
 
@@ -330,9 +391,10 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
             ...booking,
             status: "rejected",
           });
+          showToast("Booking avslått", "success");
           renderBookingDetails(view, booking.id);
         } catch {
-          alert("Kunne ikke oppdatere booking");
+          showToast("Kunne ikke oppdatere booking", "error");
         }
       });
     }
@@ -367,9 +429,14 @@ function openDeleteModal(view: HTMLElement, bookingId: number) {
   });
 
   modal.querySelector("#yes")?.addEventListener("click", async () => {
+    try {
     await deleteBooking(bookingId.toString());
 
     modal.remove();
+    showToast("Booking slettet", "success");
     renderBookings(view);
+      } catch {
+    showToast("Kunne ikke slette booking", "error");
+  }
   });
 }

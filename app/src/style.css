@@ -28,7 +28,7 @@ header {
   max-width: 100%;
   padding: 8px 0;
   position: relative;
-  background: #E7A66B;
+  background: #e7a66b;
 }
 
 header .wrapper_header {
@@ -48,7 +48,7 @@ header .wrapper_header {
 
 nav a {
   text-decoration: none;
-  color: #ffffff;
+  color: #1f1f1f;
 }
 
 nav ul {
@@ -88,7 +88,7 @@ nav ul {
 .burger span {
   width: 35px;
   height: 4px;
-  background-color: #697077;
+  background-color: #1f1f1f;
   border-radius: 2px;
   transition: 0.3s;
 }
@@ -136,7 +136,7 @@ nav ul {
 
 /* Footer style */
 footer {
-  background: #ac7f5e;
+  background: #e7a66b;
   width: 100%;
   margin-top: auto;
 }
@@ -156,19 +156,19 @@ footer ul {
 
 .icons img {
   margin-right: 16px;
+  filter: brightness(0) saturate(100%);
 }
 
 .divider_footer {
   max-width: 86vw;
   height: 1px;
   margin: 26px auto;
-  background: #C1C7CD;
-  color: white;
+  background: #1f1f1f;
   text-decoration: none;
 }
 
 .company {
-  color: var(--Default-White, #fff);
+  /* color: var(--Default-White, #fff); */
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -176,7 +176,7 @@ footer ul {
 }
 
 .company a {
-  color: white;
+  color: #1f1f1f;
   text-decoration: none;
 
 }

@@ -1,9 +1,8 @@
 // Ivan Drozd
 
-const API_URL = "http://localhost:3000/api/bookings";
+const BASE_URL = "http://localhost:3000/api/bookings";
 const API_KEY = "12345";
 
-// import type { Booking } from "../types/bookings";
 export type Booking = {
 id: number;
 userId: number;
@@ -35,7 +34,7 @@ updated: string;
 };
 
 export const getBookings = async (): Promise<Booking[]> => {
-  const res = await fetch(API_URL);
+  const res = await fetch(BASE_URL);
   if (!res.ok) throw new Error(res.status.toString());
   return res.json();
 };
@@ -50,7 +49,7 @@ export const getUsers = async (): Promise<User[]> => {
 export const createBooking = async (
   data: Partial<Booking>
 ): Promise<Booking> => {
-  const res = await fetch(API_URL, {
+  const res = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -67,7 +66,7 @@ export const updateBooking = async (
   id: string,
   data: Partial<Booking>
 ): Promise<Booking> => {
-  const res = await fetch(`${API_URL}/${id}`, {
+  const res = await fetch(`${BASE_URL}/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -81,7 +80,7 @@ export const updateBooking = async (
 };
 
 export const deleteBooking = async (id: string): Promise<void> => {
-  const res = await fetch(`${API_URL}/${id}`, {
+  const res = await fetch(`${BASE_URL}/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${API_KEY}`,

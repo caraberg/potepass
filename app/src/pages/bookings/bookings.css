@@ -61,7 +61,7 @@ h1 {
     gap: 10px;
     border: none;
     border-radius: 10px;
-    background: #E7A66B ;
+    background: #e7a66b;
     color: #000;
     font-size: 16px;
     font-weight: 500;
@@ -100,7 +100,7 @@ h1 {
     justify-content: space-between;
     padding: 40px 35px 27px 60px ;
     border-radius: 10px;
-    border: 1px solid #E7A66B;
+    border: 1px solid #e7a66b;
 }
 
 .name {
@@ -145,7 +145,7 @@ h1 {
     align-items: center;
     gap: 10px;
     border-radius: 10px;
-    background: #E7A66B;
+    background: #e7a66b;
     border: none;
 }
 
@@ -440,9 +440,7 @@ h1 {
     background: #5a7a5a;
 }
 
-
-
-/* LOADING STATE */
+/* loading style */
 .loading-container {
     display: flex;
     flex-direction: column;
@@ -477,7 +475,7 @@ h1 {
     }
 }
 
-/* STATUS COLORS */
+/* status colors */
 .status {
     font-weight: 600;
     text-transform: capitalize;
@@ -496,4 +494,31 @@ h1 {
 /* rejected = red */
 .status.rejected {
     color: #e74c3c;
+}
+
+/* toast style */
+.toast {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 14px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* colors */
+.toast.success {
+    background: #27ae60;
+}
+
+.toast.error {
+    background: #e74c3c;
+}
+
+.toast.info {
+    background: #f39c12;
 }

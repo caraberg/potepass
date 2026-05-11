@@ -4,11 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
+  "dev": "vite",
+  "build": "tsc && vite build",
+  "preview": "vite preview",
+  "uu:forside": "pa11y http://localhost:5173/",
+  "uu:bookings": "pa11y http://localhost:5173/bookings --timeout 5000 --wait 2000",
+  "uu:petsitters": "pa11y http://localhost:5173/petsitters --timeout 5000 --wait 2000", 
+  "uu": "npm run uu:forside && npm run uu:petsitters && npm run uu:bookings"  
+},
   "devDependencies": {
+    "pa11y": "^9.1.1",
     "typescript": "~5.9.3",
     "vite": "^7.3.1"
   }

@@ -3,7 +3,7 @@ export function renderHeader(): string {
   <header>
     <div class="wrapper_header">
       <div class="logo">
-        <a href="#" class="logo_link"><img src="/logo.png" alt="logo" /></a>
+        <a href="/forside" class="logo_link"><img src="/logo.png" alt="logo" /></a>
       </div>
 
       <nav class="nav">
@@ -13,10 +13,10 @@ export function renderHeader(): string {
           <span></span>
         </button>
         <ul>
-          <li><a href="#" id="profile">Min profil</a></li>
-          <li><a href="#" id="petsitters">Finn hundepasser</a></li>
-          <li><a href="#" id="bookings">Mine Bookinger</a></li>
-          <li><a class="logg_ut" href="#" id="logout">Logg ut</a></li>
+          <li><a href="/profile" id="profile">Min profil</a></li>
+          <li><a href="/petsitters" id="petsitters">Finn hundepasser</a></li>
+          <li><a href="/bookings" id="bookings">Mine Bookinger</a></li>
+          <li><a class="logg_ut" href="/logout" id="logout">Logg ut</a></li>
         </ul>
       </nav>
     </div>
