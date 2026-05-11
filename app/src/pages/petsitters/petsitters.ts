@@ -42,6 +42,10 @@ function nowIsoString() {
   return new Date().toISOString();
 }
 
+function parsePrice(value: string) {
+  return Number(value.replace(",", "."));
+}
+
 async function loadPetSitters() {
   try {
     petSitters = await getPetSitters();
@@ -59,11 +63,11 @@ function getFilteredPetSitters() {
 
     const matchesPriceFrom =
       priceFromFilter.trim() === "" ||
-      petSitter.pricePerDay >= Number(priceFromFilter);
+      petSitter.pricePerDay >= parsePrice(priceFromFilter);
 
     const matchesPriceTo =
       priceToFilter.trim() === "" ||
-      petSitter.pricePerDay <= Number(priceToFilter);
+      petSitter.pricePerDay <= parsePrice(priceToFilter);
 
     const matchesAvailability =
       !availableOnlyFilter || petSitter.available === true;
@@ -425,7 +429,7 @@ export function setupPetSittersEvents() {
     await createPetSitter({
      name: nameInput.value,
      location: cityInput.value,
-     pricePerDay: Number(priceInput.value) || 0,
+     pricePerDay: parsePrice(priceInput.value) || 0,
      rating: 5,
      reviewCount: 0,
      maxDogs: 1,
@@ -497,7 +501,7 @@ export function setupPetSittersEvents() {
           ...existingPetSitter,
           name: nameInput.value,
           location: cityInput.value,
-          pricePerDay: Number(priceInput.value) || 0,
+          pricePerDay: parsePrice(priceInput.value) || 0,
           available: availableInput.checked,
           experienceDescription: descriptionInput.value,
           updated: nowIsoString(),
