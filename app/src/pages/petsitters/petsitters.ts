@@ -270,8 +270,14 @@ export function renderPetSitterDetail(id: number): string {
     <section class="petsitter-detail">
       <div class="petsitter-detail-card">
         <div class="petsitter-detail-actions">
-          <button class="detail-icon-btn" id="delete-btn" data-id="${petSitter.id}" aria-label="Slett">🗑️</button>
-          <button class="detail-icon-btn" id="edit-btn" data-id="${petSitter.id}" aria-label="Rediger">✏️</button>
+
+          <button class="detail-icon-btn" 
+          id="edit-btn" 
+          data-id="${petSitter.id}" 
+          aria-label="Rediger">
+
+          <img src="/Note_Edit.png" alt="Rediger" class="action-icon" />
+        </button>
         </div>
 
         <div class="petsitter-detail-content">
@@ -297,7 +303,17 @@ export function renderPetSitterDetail(id: number): string {
 
         <div class="petsitter-detail-buttons">
           <button class="back-btn">Tilbake</button>
-          <button class="book-btn" id="book-btn" data-id="${petSitter.id}">Book hundepasser</button>
+          <button class="book-btn" 
+          id="book-btn" 
+          data-id="${petSitter.id}">Book hundepasser
+          </button>
+          
+          <button
+          class="delete-action-btn"
+          id="delete-btn"
+          data-id="${petSitter.id}">
+          Slett
+          </button>
         </div>
       </div>
 

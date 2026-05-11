@@ -476,6 +476,32 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+.action-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.detail-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.delete-action-btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #e0c9b0;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.delete-action-btn:hover {
+  background: #f8eee5;
+}
+
 @media (max-width: 768px) {
   .petsitter-modal {
     max-width: 320px;
