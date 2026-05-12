@@ -53,12 +53,6 @@ if (path === "/petsitters") {
     return;
   }
 
-  /*
-  if (path === "/logout") {
-    renderHome(view!);
-    return;
-  }*/
-
   // Hvis ingen treff, bruk startside
   renderHomePage(view!);
 }

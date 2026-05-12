@@ -1,11 +1,11 @@
 import "./forside.css";
 
 import { renderBookings } from "../bookings/bookings";
-
 import {
   renderPetSittersPage,
   setupPetSittersEvents,
 } from "../petsitters/petsitters";
+// import { renderUsers } from "./pages/users/users";
 
 export function renderHomePage(view: HTMLElement) {
 
@@ -60,7 +60,6 @@ export function renderHomePage(view: HTMLElement) {
   `;
 
   //profile
-
   document
     .querySelector("#profile-card")
     ?.addEventListener("click", () => {
@@ -73,7 +72,6 @@ export function renderHomePage(view: HTMLElement) {
     });
 
   // bookings
-
   document
     .querySelector("#bookings-card")
     ?.addEventListener("click", async () => {
@@ -82,7 +80,6 @@ export function renderHomePage(view: HTMLElement) {
     });
 
   // petsitters
-
   document
     .querySelector("#petsitters-card")
     ?.addEventListener("click", async () => {

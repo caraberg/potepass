@@ -65,18 +65,6 @@ nav ul {
   gap: 48px;
 }
 
-.logg_ut {
-  color: #21272a;
-  display: flex;
-  padding: 12px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 10px;
-  border: 1px solid #000;
-  background: #bcd9c3;
-}
-
 /* burger style */
 .nav {
   position: relative;

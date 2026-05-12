@@ -10,9 +10,13 @@ import {
 } from "../../api/bookingsApi";
 import { getPetSitters } from "../../api/petsittersApi";
 import type { Booking } from "../../api/bookingsApi";
+import type { PetSitter } from "../petsitters/petsitters";
 
-const CURRENT_USER_ID = 1; // hardcoded for now, since we don't have authentication
+// hardcoded current user, since we don't have authentication
+const CURRENT_USER_ID = 1; 
+const today = new Date().toISOString().split("T")[0];
 
+// display toast notification
 function showToast(text: string, type: "success" | "error" | "info") {
   const toast = document.createElement("div");
 
@@ -26,6 +30,31 @@ function showToast(text: string, type: "success" | "error" | "info") {
     }, 3000);
 }
 
+// validate booking form
+function validateBookingDates(
+  fromDate: string,
+  toDate: string,
+  message: string
+) {
+  if (!fromDate || !toDate || !message.trim()) {
+    showToast("Fyll inn alle felter", "error");
+    return false;
+  }
+
+  if (fromDate < today || toDate < today) {
+    showToast("Du kan ikke velge dato i fortiden", "error");
+    return false;
+  }
+
+  if (fromDate > toDate) {
+    showToast("Fra dato kan ikke være etter til dato", "error");
+    return false;
+  }
+
+  return true;
+}
+
+// render all bookings for the current user
 export async function renderBookings(view: HTMLElement) {
   try{
       view.innerHTML = `
@@ -65,7 +94,7 @@ export async function renderBookings(view: HTMLElement) {
 
     const dog = user.dogs.find((d) => d.id === booking.userDogId);
     const sitter = petsitters.find(
-      (s: any) => s.id === booking.petSitterId
+      (s: PetSitter) => s.id === booking.petSitterId
     );
 
     const card = document.createElement("div");
@@ -152,7 +181,7 @@ async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) 
     </label>
 
     <select id="sitter" ${selectedPetSitterId ? 'style="display:none;"' : ""}>
-    ${petSitters.map((s: any) => `
+    ${petSitters.map((s: PetSitter) => `
     <option value="${s.id}" ${selectedPetSitterId === s.id ? "selected" : ""}>
       ${s.name}
     </option>
@@ -160,10 +189,10 @@ async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) 
     </select>
 
       <label>Fra dato</label>
-      <input type="date" id="fromDate">
+      <input type="date" id="fromDate" min="${today}">
 
       <label>Til dato</label>
-      <input type="date" id="toDate">
+      <input type="date" id="toDate" min="${today}">
 
       <label>Melding</label>
       <input type="text" id="message">
@@ -193,15 +222,10 @@ async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) 
       modal.querySelector("#message") as HTMLInputElement
     ).value;
 
-    if (!fromDate || !toDate || !message.trim()) {
-      showToast("Fyll inn alle felter", "error");
-      return;
+    if (!validateBookingDates(fromDate, toDate, message)) {
+     return;
     }
 
-    if (fromDate > toDate) {
-      showToast("Fra dato kan ikke være etter til dato", "error");
-      return;
-    }
     await createBooking({
       userId: CURRENT_USER_ID,
       userDogId: Number((modal.querySelector("#dog") as HTMLSelectElement).value),
@@ -233,10 +257,10 @@ function openEditModal(view: HTMLElement, booking: Booking) {
       <div class="divider-modal"></div>
 
       <label>Fra dato</label>
-      <input type="date" id="fromDate" value="${booking.fromDate}">
+      <input type="date" id="fromDate" value="${booking.fromDate}" min="${today}">
 
       <label>Til dato</label>
-      <input type="date" id="toDate" value="${booking.toDate}">
+      <input type="date" id="toDate" value="${booking.toDate}" min="${today}">
 
       <label>Melding</label>
       <input type="text" id="message" value="${booking.message || ""}">
@@ -277,11 +301,11 @@ function openEditModal(view: HTMLElement, booking: Booking) {
       return;
     }
 
-    if (fromDate > toDate) {
-    showToast("Fra dato kan ikke være etter til dato", "error");
+   if (!validateBookingDates(fromDate, toDate, message)) {
     return;
-    }
-    await updateBooking(booking.id.toString(), {
+   }
+
+    await updateBooking(booking.id, {
       ...booking,
       fromDate,
       toDate,
@@ -298,6 +322,7 @@ function openEditModal(view: HTMLElement, booking: Booking) {
   });
 }
 
+// render booking details page
 async function renderBookingDetails(view: HTMLElement, id: number) {
   try {
     view.innerHTML = `
@@ -317,7 +342,7 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
   if (!user) return;
 
   const dog = user.dogs.find((d) => d.id === booking.userDogId);
-  const sitter = petSitters.find((s: any) => s.id === booking.petSitterId);
+  const sitter = petSitters.find((s: PetSitter) => s.id === booking.petSitterId);
 
   view.innerHTML = `
     <div class="details_container">
@@ -356,7 +381,7 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
         </div>
 
        <div class="details_image">
-        <img src="/schafer.jpg" alt="${dog?.name || 'Hund'}">
+        <img src="/schafer.jpg"  alt="${dog?.name || 'dog'}">
        </div>
 
       </div>
@@ -384,8 +409,7 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
   if (booking.status === "pending") {
       view.querySelector("#approve")?.addEventListener("click", async () => {
         try {
-          await updateBooking(booking.id.toString(), {
-            ...booking,
+          await updateBooking(booking.id, {
             status: "approved",
           });
           showToast("Booking godkjent", "success");
@@ -397,8 +421,7 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
 
       view.querySelector("#reject")?.addEventListener("click", async () => {
         try {
-          await updateBooking(booking.id.toString(), {
-            ...booking,
+          await updateBooking(booking.id, {
             status: "rejected",
           });
           showToast("Booking avslått", "success");
@@ -440,7 +463,7 @@ function openDeleteModal(view: HTMLElement, bookingId: number) {
 
   modal.querySelector("#yes")?.addEventListener("click", async () => {
     try {
-    await deleteBooking(bookingId.toString());
+    await deleteBooking(bookingId);
 
     modal.remove();
     showToast("Booking slettet", "success");

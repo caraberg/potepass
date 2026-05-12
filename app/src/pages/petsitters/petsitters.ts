@@ -11,7 +11,7 @@ import {
   deletePetSitter,
 } from "../../api/petsittersApi";
 
-type PetSitter = {
+ export type PetSitter = {
   id: number;
   name: string;
   location: string;
