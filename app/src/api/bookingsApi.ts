@@ -63,7 +63,7 @@ export const createBooking = async (
 };
 
 export const updateBooking = async (
-  id: string,
+  id: number,
   data: Partial<Booking>
 ): Promise<Booking> => {
   const res = await fetch(`${BASE_URL}/${id}`, {
@@ -79,7 +79,7 @@ export const updateBooking = async (
   return res.json();
 };
 
-export const deleteBooking = async (id: string): Promise<void> => {
+export const deleteBooking = async (id: number): Promise<void> => {
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: "DELETE",
     headers: {

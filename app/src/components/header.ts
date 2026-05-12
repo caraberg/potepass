@@ -16,7 +16,6 @@ export function renderHeader(): string {
           <li><a href="/profile" id="profile">Min profil</a></li>
           <li><a href="/petsitters" id="petsitters">Finn hundepasser</a></li>
           <li><a href="/bookings" id="bookings">Mine Bookinger</a></li>
-          <li><a class="logg_ut" href="/logout" id="logout">Logg ut</a></li>
         </ul>
       </nav>
     </div>
