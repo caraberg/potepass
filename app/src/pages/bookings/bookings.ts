@@ -306,7 +306,6 @@ function openEditModal(view: HTMLElement, booking: Booking) {
    }
 
     await updateBooking(booking.id, {
-      ...booking,
       fromDate,
       toDate,
       message,
