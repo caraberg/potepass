@@ -11,7 +11,7 @@ import {
   deletePetSitter,
 } from "../../api/petsittersApi";
 
- export type PetSitter = {
+export type PetSitter = {
   id: number;
   name: string;
   location: string;
@@ -473,7 +473,9 @@ export function setupPetSittersEvents() {
       return;
     }
 
-    if (target.id === "edit-btn") {
+    const editButton = target.closest("#edit-btn");
+
+    if (editButton) {
       const overlay = document.querySelector<HTMLElement>("#edit-modal-overlay");
       overlay?.classList.remove("hidden");
       return;
