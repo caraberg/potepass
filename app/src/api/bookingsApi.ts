@@ -35,14 +35,17 @@ updated: string;
 
 export const getBookings = async (): Promise<Booking[]> => {
   const res = await fetch(BASE_URL);
-  if (!res.ok) throw new Error(res.status.toString());
-  return res.json();
+if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }  return res.json();
 };
 
 // find dogs from api users 
 export const getUsers = async (): Promise<User[]> => {
   const res = await fetch("http://localhost:3000/api/users");
-  if (!res.ok) throw new Error(res.status.toString());
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
   return res.json();
 };
 
@@ -58,7 +61,9 @@ export const createBooking = async (
     body: JSON.stringify(data),
   });
 
-  if (!res.ok) throw new Error(res.status.toString());
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
   return res.json();
 };
 
@@ -75,7 +80,9 @@ export const updateBooking = async (
     body: JSON.stringify(data),
   });
 
-  if (!res.ok) throw new Error(res.status.toString());
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
   return res.json();
 };
 
@@ -87,6 +94,8 @@ export const deleteBooking = async (id: number): Promise<void> => {
     },
   });
 
-  if (!res.ok) throw new Error(res.status.toString());
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
 };
 
