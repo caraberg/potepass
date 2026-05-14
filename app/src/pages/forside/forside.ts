@@ -5,12 +5,11 @@ import {
   renderPetSittersPage,
   setupPetSittersEvents,
 } from "../petsitters/petsitters";
-// import { renderUsers } from "./pages/users/users";
+import { renderProfile } from "../users/users";
 
 export function renderHomePage(view: HTMLElement) {
 
   view.innerHTML = `
-  
   <section class="home">
 
     <div class="hero">
@@ -62,13 +61,10 @@ export function renderHomePage(view: HTMLElement) {
   //profile
   document
     .querySelector("#profile-card")
-    ?.addEventListener("click", () => {
+    ?.addEventListener("click", async () => {
       history.pushState({}, "", "/profile");
-      view.innerHTML = `
-        <div class="profile-coming">
-          <h1>Min profil kommer snart ♡</h1>
-        </div>
-      `;
+      await renderProfile(view);
+
     });
 
   // bookings
