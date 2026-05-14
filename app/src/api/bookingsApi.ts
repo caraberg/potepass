@@ -17,21 +17,20 @@ updated: string;
 };
 
 export type User = {
-id: number;
-userName: string;
-surname?: string;
-password: string;
-email: string;
-image?: string;
-dogs: {
   id: number;
-  name: string;
-  breed: string;
-  age: number;
-  weight?: number;
-}[];
-created: string;
-updated: string;
+  userName: string;
+  password: string;
+  email: string;
+  description: string;
+  dogs: {
+    id: number;
+    name: string;
+    breed: string;
+    age: number;
+    allergies: string[];
+  }[];
+  created: string;
+  updated: string;
 };
 
 export const getBookings = async (): Promise<Booking[]> => {
