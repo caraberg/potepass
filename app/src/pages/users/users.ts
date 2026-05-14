@@ -46,7 +46,7 @@ export function renderProfile(container: HTMLElement) {
 
           <div class="dog-container">
             <div class="addDog-modal-overlay hidden" id="addDog-modal-overlay">
-              <div class="modal">
+              <div class="modal-user">
                 <h2>Hundens profil</h2>
                 <div class="dog-picture">
                   <label for="dogUploadImage" class="dog-picture">
@@ -69,7 +69,7 @@ export function renderProfile(container: HTMLElement) {
                   <label for="modal-weight"></label>
                   <input id="modal-weight" type="number" placeholder="Vekt" />
 
-                  <div class="modal-buttons">
+                  <div class="modal-userbuttons">
                     <button class="modal-saveBtn" id="save-modal-btn">
                       Lagre
                     </button>

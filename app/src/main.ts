@@ -32,11 +32,10 @@ renderPage();
 async function renderPage() {
   const path = window.location.pathname;
 
-   if (path === "/profile") {
-     renderProfile(view!);
-     return;
-   }
-
+  if (path === "/profile") {
+    renderProfile(view!);
+    return;
+  }
 
   if (path === "/" || path === "/forside") {
     renderHomePage(view!);
