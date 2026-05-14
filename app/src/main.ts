@@ -5,7 +5,7 @@ import { renderHeader } from "./components/header";
 import { renderFooter } from "./components/footer";
 import { renderBookings } from "./pages/bookings/bookings";
 import { renderPetSittersPage, setupPetSittersEvents } from "./pages/petsitters/petsitters";
-// import { renderUsers } from "./pages/users/users";
+import { renderProfile } from "./pages/users/users";
 
 const app = document.querySelector<HTMLDivElement>("#app");
 
@@ -32,10 +32,11 @@ renderPage();
 async function renderPage() {
   const path = window.location.pathname;
 
-  // if (path === "/profile") {
-  //   renderProfile(view!);
-  //   return;
-  // }
+   if (path === "/profile") {
+     renderProfile(view!);
+     return;
+   }
+
 
   if (path === "/" || path === "/forside") {
     renderHomePage(view!);

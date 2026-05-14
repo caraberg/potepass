@@ -1,72 +1,4 @@
 /* Ewa Cwik */
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  min-height: 100vh;
-}
-
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-#view {
-  height: 100%;
-}
-
-header {
-  max-width: 100%;
-  padding: 8px 98px;
-  position: relative;
-  background: #e7a66b;
-}
-
-header .wrapper_header {
-  min-height: 56px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-nav ul {
-  display: flex;
-  text-align: center;
-  list-style: none;
-  align-items: center;
-  gap: 48px;
-}
-
-.logg_ut {
-  color: #21272a;
-  display: flex;
-  padding: 12px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 50px;
-  border: 1px solid #000;
-  background: #bcd9c3;
-}
 
 .main-container {
   display: flex;
@@ -135,7 +67,7 @@ nav ul {
 }
 
 .hidden {
-  display: none /*important - her modal er synlig hele tiden og må fikses*/
+  display: none;
 }
 
 .dog-picture {
@@ -156,6 +88,13 @@ nav ul {
   opacity: 0.8;
 }
 
+#dogPreviewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
 .addDog-modal-overlay {
   position: fixed;
   top: 0;
@@ -166,7 +105,7 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  }
 
 .modal {
   background: white;
@@ -174,6 +113,7 @@ nav ul {
   border-radius: 10px;
   width: 300px;
   height: 500px;
+  margin: auto;
 }
 
 .dog-container {
@@ -299,50 +239,7 @@ input {
   opacity: 0.8;
 }
 
-footer {
-  background: #ac7f5e;
-  width: 100%;
-  margin-top: auto;
-}
 
-.wrapper_footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 87vw;
-  padding-top: 25px;
-}
-
-footer ul {
-  color: #fff;
-}
-
-.icons img {
-  margin-right: 16px;
-}
-
-.divider_footer {
-  max-width: 86vw;
-  height: 1px;
-  margin: 26px auto;
-  background: #c1c7cd;
-  color: white;
-  text-decoration: none;
-}
-
-.company {
-  color: var(--Default-White, #fff);
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-  padding-bottom: 25px;
-}
-
-.company a {
-  color: white;
-  text-decoration: none;
-}
 
 /*iphone*/
 
