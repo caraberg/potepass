@@ -10,7 +10,6 @@ import { renderProfile } from "../users/users";
 export function renderHomePage(view: HTMLElement) {
 
   view.innerHTML = `
-  
   <section class="home">
 
     <div class="hero">
