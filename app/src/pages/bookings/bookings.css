@@ -1,17 +1,5 @@
 /* Ivan Drozd */
 
-/* body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-} */
-
 .container {
     position: relative;
     max-width: 1440px;
@@ -150,14 +138,7 @@ h1 {
 }
 
 @media (max-width: 900px) {
-    /* Header  and Footer */
-  nav ul {
-    gap: 30px;
-   }
 
-    .logo img {
-        max-width: 120px;
-    }
 
     .icons img {
         margin-right: 8px;
