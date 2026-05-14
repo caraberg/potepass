@@ -17,18 +17,18 @@ updated: string;
 };
 
 export type User = {
-userId: number;
+id: number;
 userName: string;
-surname: string;
+surname?: string;
 password: string;
 email: string;
-image: string;
+image?: string;
 dogs: {
   id: number;
   name: string;
   breed: string;
   age: number;
-  weight: number;
+  weight?: number;
 }[];
 created: string;
 updated: string;

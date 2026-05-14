@@ -89,7 +89,7 @@ export async function renderBookings(view: HTMLElement) {
   );
 
   currentUserBookings.forEach((booking) => {
-    const user = users.find((u) => u.userId === booking.userId);
+    const user = users.find((u) => u.id === booking.userId);
     if (!user) return;
 
     const dog = user.dogs.find((d) => d.id === booking.userDogId);
@@ -158,7 +158,7 @@ export async function openCreateModalForPetSitter(
 
 async function openCreateModal(view: HTMLElement, selectedPetSitterId?: number) {
   const users = await getUsers();
-  const user = users.find((u) => u.userId === CURRENT_USER_ID);
+  const user = users.find((u) => u.id === CURRENT_USER_ID);
   const petSitters = await getPetSitters();
 
   if (!user) return;
@@ -337,7 +337,7 @@ async function renderBookingDetails(view: HTMLElement, id: number) {
   const booking = bookings.find((b) => b.id === id);
   if (!booking) return;
 
-  const user = users.find((u) => u.userId === booking.userId);
+  const user = users.find((u) => u.id === booking.userId);
   if (!user) return;
 
   const dog = user.dogs.find((d) => d.id === booking.userDogId);

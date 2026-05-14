@@ -4,7 +4,7 @@ const BASE_URL = "http://localhost:3000/api/users";
 const API_KEY = "12345";
 
 type User = {
-userId: number;
+id: number;
 userName: string;
 surname: string;
 password: string;
@@ -15,7 +15,7 @@ dogs: {
   name: string;
   breed: string;
   age: number;
-  weight: number;
+  weight?: number;
 }[];
 created: string;
 updated: string;
@@ -26,7 +26,7 @@ type Dog = {
   dogName: string;
   breed: string;
   age: number;
-  weight: number;
+  weight?: number;
 };
 
 export async function getAllUsers(): Promise<User[]> {

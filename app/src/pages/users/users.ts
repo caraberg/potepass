@@ -1,21 +1,21 @@
 /* Ewa Cwik*/
 
 import "./users.css";
-import { getUser, updateUser, deleteUser } from "../../api/usersApi";
+import { getAllUsers, updateUser, deleteUser } from "../../api/usersApi";
 
 export type User = {
-  userId: number;
+  id: number;
   userName: string;
-  surname: string;
+  surname?: string;
   password: string;
   email: string;
-  image: string;
+  image?: string;
   dogs: {
     id: number;
-    dogName: string;
+    name: string;
     breed: string;
     age: number;
-    weight: number;
+    weight?: number;
   }[];
   created: string;
   updated: string;
@@ -23,10 +23,10 @@ export type User = {
 
 type Dog = {
   id: number;
-  dogName: string;
+  name: string;
   breed: string;
   age: number;
-  weight: number;
+  weight?: number;
 };
 
 export function renderProfile(container: HTMLElement) {
@@ -125,6 +125,7 @@ export function renderProfile(container: HTMLElement) {
 }
 
 function initUsers() {
+  console.log("NY USERS-KODE KJØRER");
   const userNameInput = document.getElementById(
     "edit-userName-txt",
   ) as HTMLInputElement;
@@ -154,30 +155,35 @@ function initUsers() {
   const userId = 1;
 
   async function loadUser() {
-    try {
-      const user = await getUser(userId);
+  try {
+    const users = await getAllUsers();
+    const user = users.find((user) => user.id === userId);
 
-      userNameInput.value = user.userName;
-      surnameInput.value = user.surname;
-      passwordInput.value = user.password;
-      emailInput.value = user.email;
-
-      if (user.dogs.length > 0) {
-        dogNameInput.value = user.dogs[0].dogName;
-        breedInput.value = user.dogs[0].breed;
-        ageInput.value = user.dogs[0].age.toString();
-        weightInput.value = user.dogs[0].weight.toString();
-      }
-    } catch (error) {
-      alert("Kunne ikke hente bruker");
+    if (!user) {
+      throw new Error("Fant ikke bruker");
     }
+
+    userNameInput.value = user.userName;
+    surnameInput.value = user.surname || "";
+    passwordInput.value = user.password;
+    emailInput.value = user.email;
+
+    if (user.dogs.length > 0) {
+      dogNameInput.value = user.dogs[0].name;
+      breedInput.value = user.dogs[0].breed;
+      ageInput.value = user.dogs[0].age.toString();
+      weightInput.value = user.dogs[0].weight?.toString() || "";
+    }
+  } catch (error) {
+    alert("Kunne ikke hente bruker");
   }
+}
 
   loadUser();
 
   saveBtn.addEventListener("click", async () => {
     const updatedUser = {
-      userId,
+      id: userId,
       email: emailInput.value,
       userName: userNameInput.value,
       surname: surnameInput.value,
@@ -253,7 +259,7 @@ function initUsers() {
     }
     const newDog: Dog = {
       id: dogIdCounter++,
-      dogName: name,
+      name: name,
       breed,
       age,
       weight,
@@ -261,6 +267,9 @@ function initUsers() {
 
     dogs.push(newDog);
     showDogs();
+
+    const overlay = document.querySelector<HTMLElement>("#addDog-modal-overlay");
+    overlay?.classList.add("hidden");
 
     dogNameInput.value = "";
     breedInput.value = "";
@@ -275,7 +284,7 @@ function initUsers() {
       const dogDiv = document.createElement("div");
       dogDiv.classList.add("dog-card");
       dogDiv.innerHTML = `
-      <h3>${dog.dogName}</h3>
+      <h3>${dog.name}</h3>
       <p>Avle: ${dog.breed}</p>
       <p>Alder: ${dog.age}</p>
       <p>Vekt: ${dog.weight}</p>
