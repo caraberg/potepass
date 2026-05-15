@@ -125,7 +125,6 @@ export function renderProfile(container: HTMLElement) {
 }
 
 function initUsers() {
-  console.log("NY USERS-KODE KJØRER");
   const userNameInput = document.getElementById(
     "edit-userName-txt",
   ) as HTMLInputElement;
