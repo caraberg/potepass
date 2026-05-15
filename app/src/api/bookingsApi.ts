@@ -16,22 +16,22 @@ created: string;
 updated: string;
 };
 
-export type User = {
-  id: number;
-  userName: string;
-  password: string;
-  email: string;
-  description: string;
-  dogs: {
-    id: number;
-    name: string;
-    breed: string;
-    age: number;
-    allergies: string[];
-  }[];
-  created: string;
-  updated: string;
-};
+// export type User = {
+// id: number;
+// userName: string;
+// password: string;
+// email: string;
+// description: string;
+// dogs: {
+//   id: number;
+//   name: string;
+//   breed: string;
+//   age: number;
+//   allergies: string[];
+// }[];
+// created: string;
+// updated: string;
+// };
 
 export const getBookings = async (): Promise<Booking[]> => {
   const res = await fetch(BASE_URL);
@@ -41,13 +41,13 @@ if (!res.ok) {
 };
 
 // find dogs from api users 
-export const getUsers = async (): Promise<User[]> => {
-  const res = await fetch("http://localhost:3000/api/users");
-  if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
-  }
-  return res.json();
-};
+// export const getUsers = async (): Promise<User[]> => {
+//   const res = await fetch("http://localhost:3000/api/users");
+//   if (!res.ok) {
+//     throw new Error(`HTTP error! status: ${res.status}`);
+//   }
+//   return res.json();
+// };
 
 export const createBooking = async (
   data: Partial<Booking>
@@ -98,4 +98,3 @@ export const deleteBooking = async (id: number): Promise<void> => {
     throw new Error(`HTTP error! status: ${res.status}`);
   }
 };
-

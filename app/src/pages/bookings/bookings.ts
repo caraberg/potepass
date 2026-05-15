@@ -3,7 +3,6 @@
 import "./bookings.css";
 import {
   getBookings,
-  getUsers,
   createBooking,
   updateBooking,
   deleteBooking,
@@ -11,6 +10,7 @@ import {
 import { getPetSitters } from "../../api/petsittersApi";
 import type { Booking } from "../../api/bookingsApi";
 import type { PetSitter } from "../petsitters/petsitters";
+import { getUsers } from "../../api/usersApi";
 
 // hardcoded current user, since we don't have authentication
 const CURRENT_USER_ID = 1; 

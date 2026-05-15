@@ -1,7 +1,7 @@
 /* Ewa Cwik*/
 
 import "./users.css";
-import { getAllUsers, updateUser, deleteUser } from "../../api/usersApi";
+import { getUsers, updateUser, deleteUser } from "../../api/usersApi";
 
 export type User = {
   id: number;
@@ -156,7 +156,7 @@ function initUsers() {
 
   async function loadUser() {
   try {
-    const users = await getAllUsers();
+    const users = await getUsers();
     const user = users.find((user) => user.id === userId);
 
     if (!user) {
